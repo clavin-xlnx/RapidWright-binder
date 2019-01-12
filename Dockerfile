@@ -7,9 +7,10 @@ RUN pip3 install --no-cache-dir notebook==5.5.* jupyterlab==0.32.*
 
 # Download RapidWright and install kernel
 USER root
-RUN mkdir rapidwright_kernel && cd rapidwright_kernel
-RUN curl -L https://github.com/Xilinx/RapidWright/releases/download/v2018.3.0-beta/rapidwright-2018.3.0-standalone-lin64.jar > rapidwright-2018.3.0-standalone-lin64.jar
-#RUN java -jar rapidwright-2018.3.0-standalone-lin64.jar --create_jupyter_kernel
+RUN mkdir rapidwright_kernel
+RUN curl -L https://github.com/Xilinx/RapidWright/releases/download/v2018.3.0-beta/rapidwright-2018.3.0-standalone-lin64.jar > /rapidwright_kernel/rapidwright-2018.3.0-standalone-lin64.jar
+RUN cd rapidwright_kernel && java -jar rapidwright-2018.3.0-standalone-lin64.jar --create_jupyter_kernel
+RUN jupyter kernelspec install /rapidwright_kernel
 
 # Setup user environment
 ENV NB_USER jovyan
@@ -28,4 +29,4 @@ USER $NB_USER
 
 # Launch the notebook server
 WORKDIR $HOME
-CMD ["jupyter", "notebook", "--ip", "0.0.0.0", "--no-browser", "--allow-root"]
+CMD ["jupyter", "notebook", "--ip", "0.0.0.0", "--no-browser"]
