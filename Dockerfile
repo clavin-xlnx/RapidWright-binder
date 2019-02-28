@@ -10,7 +10,7 @@ USER root
 RUN mkdir rapidwright_kernel
 RUN curl -L https://github.com/Xilinx/RapidWright/releases/download/v2018.3.1-beta/rapidwright-2018.3.1-standalone-lin64.jar > /rapidwright_kernel/rapidwright-2018.3.1-standalone-lin64.jar
 RUN cd rapidwright_kernel && java -jar rapidwright-2018.3.1-standalone-lin64.jar --create_jupyter_kernel
-RUN jupyter kernelspec install /jython27
+RUN jupyter kernelspec install /rapidwright_kernel/jython27
 
 # Setup user environment
 ENV NB_USER jovyan
