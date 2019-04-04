@@ -8,8 +8,8 @@ RUN pip3 install --no-cache-dir notebook==5.5.* jupyterlab==0.32.*
 # Download RapidWright and install kernel
 USER root
 RUN mkdir rapidwright_kernel
-RUN curl -L https://github.com/Xilinx/RapidWright/releases/download/v2018.3.1-beta/rapidwright-2018.3.1-standalone-lin64.jar > /rapidwright_kernel/rapidwright-2018.3.1-standalone-lin64.jar
-RUN cd rapidwright_kernel && java -jar rapidwright-2018.3.1-standalone-lin64.jar --create_jupyter_kernel
+RUN curl -L https://github.com/Xilinx/RapidWright/releases/download/v2018.3.2-beta/rapidwright-2018.3.2-standalone-lin64.jar > /rapidwright_kernel/rapidwright-2018.3.1-standalone-lin64.jar
+RUN cd rapidwright_kernel && java -jar rapidwright-2018.3.2-standalone-lin64.jar --create_jupyter_kernel
 RUN jupyter kernelspec install /rapidwright_kernel/jython27
 
 # Setup user environment
