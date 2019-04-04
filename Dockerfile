@@ -3,7 +3,8 @@ MAINTAINER Chris Lavin chris.lavin@xilinx.com
 
 # Install Python and Jupyter Notebook/Labs
 RUN apt-get update && apt-get install -y python3-pip
-RUN pip3 install --no-cache-dir notebook==5.5.* jupyterlab==0.32.*
+#RUN pip3 install --no-cache-dir notebook==5.5.* jupyterlab==0.32.*
+RUN pip3 install --no-cache-dir notebook==5.7.*
 
 # Download RapidWright and install kernel
 USER root
