@@ -10,7 +10,7 @@ RUN pip3 install --no-cache-dir notebook==5.7.*
 USER root
 RUN mkdir rapidwright_kernel
 RUN curl -L https://github.com/Xilinx/RapidWright/releases/download/v2019.2.0-beta/rapidwright-2019.2.0-standalone-lin64.jar > /rapidwright_kernel/rapidwright-2019.2.0-standalone-lin64.jar
-RUN cd rapidwright_kernel && java -jar rapidwright-2019.1.2-standalone-lin64.jar --create_jupyter_kernel
+RUN cd rapidwright_kernel && java -jar rapidwright-2019.2.0-standalone-lin64.jar --create_jupyter_kernel
 RUN jupyter kernelspec install /rapidwright_kernel/jython27
 
 # Setup user environment
