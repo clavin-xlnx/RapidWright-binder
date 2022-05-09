@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM adoptopenjdk/openjdk11
 MAINTAINER Chris Lavin chris.lavin@xilinx.com
 
 # Install Python and Jupyter Notebook/Labs
