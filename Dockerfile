@@ -12,7 +12,6 @@ USER root
 RUN mkdir rapidwright_kernel
 RUN curl -L https://github.com/Xilinx/RapidWright/releases/download/v2022.1.0-beta/rapidwright-2022.1.0-standalone-lin64.jar > /rapidwright_kernel/rapidwright-2022.1.0-standalone-lin64.jar
 RUN cd rapidwright_kernel && java -jar rapidwright-2022.1.0-standalone-lin64.jar --create_jupyter_kernel
-RUN jupyter kernelspec install /rapidwright_kernel/jython27
 
 # Patch for 2022.1.0
 RUN mkdir -p /rapidwright_kernel/com/xilinx/rapidwright/util
@@ -20,6 +19,8 @@ RUN curl -L https://raw.githubusercontent.com/Xilinx/RapidWright/a5ef9dc51bfbd12
 RUN curl -L https://repo1.maven.org/maven2/org/jetbrains/annotations/20.1.0/annotations-20.1.0.jar > /rapidwright_kernel/annotations-20.1.0.jar
 RUN javac -cp /rapidwright_kernel/annotations-20.1.0.jar:/rapidwright_kernel/rapidwright-2022.1.0-standalone-lin64.jar /rapidwright_kernel/com/xilinx/rapidwright/util/ParallelismTools.java
 RUN sed -i 's=/rapidwright_kernel/=/rapidwright_kernel:/rapidwright_kernel/=' /rapidwright_kernel/jython27/kernel.json
+
+RUN jupyter kernelspec install /rapidwright_kernel/jython27
 
 # Setup user environment
 ENV NB_USER jovyan
