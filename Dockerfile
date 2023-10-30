@@ -45,6 +45,6 @@ RUN pip3 install rapidwright
 WORKDIR $HOME
 
 # Bootstrap RapidWright files
-CMD ["python3", "-c", "import rapidwright; from com.xilinx.rapidwright.examples import Lesson1; Lesson1.main([])"]
+RUN python3 -c "import rapidwright; from com.xilinx.rapidwright.examples import Lesson1; Lesson1.main([])"
 
 CMD ["jupyter", "notebook", "--ip", "0.0.0.0", "--no-browser"]
