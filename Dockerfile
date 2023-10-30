@@ -5,7 +5,8 @@ MAINTAINER Chris Lavin chris.lavin@amd.com
 RUN apt-get update && apt-get install -y python3-pip
 #RUN pip3 install --no-cache-dir notebook==5.5.* jupyterlab==0.32.*
 #RUN pip3 install --no-cache-dir notebook==5.7.*
-RUN pip3 install --no-cache-dir notebook==6.0.*
+#RUN pip3 install --no-cache-dir notebook==6.0.*
+RUN pip3 install --no-cache-dir notebook
 
 # Download RapidWright and install kernel
 #USER root
@@ -44,6 +45,6 @@ RUN pip3 install rapidwright
 WORKDIR $HOME
 
 # Bootstrap RapidWright files
-CMD ["python3", "-c" "import rapidwright; from com.xilinx.rapidwright.examples import Lesson1; Lesson1.main([])"]
+CMD ["python3", "-c", "import rapidwright; from com.xilinx.rapidwright.examples import Lesson1; Lesson1.main([])"]
 
 CMD ["jupyter", "notebook", "--ip", "0.0.0.0", "--no-browser"]
