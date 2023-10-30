@@ -1,5 +1,5 @@
 FROM adoptopenjdk/openjdk11
-MAINTAINER Chris Lavin chris.lavin@xilinx.com
+MAINTAINER Chris Lavin chris.lavin@amd.com
 
 # Install Python and Jupyter Notebook/Labs
 RUN apt-get update && apt-get install -y python3-pip
@@ -12,7 +12,7 @@ RUN pip3 install --no-cache-dir notebook==6.0.*
 #RUN mkdir rapidwright_kernel
 #RUN curl -L https://github.com/Xilinx/RapidWright/releases/download/v2022.1.0-beta/rapidwright-2022.1.0-standalone-lin64.jar > /rapidwright_kernel/rapidwright-2022.1.0-standalone-lin64.jar
 #RUN cd rapidwright_kernel && java -jar rapidwright-2022.1.0-standalone-lin64.jar --create_jupyter_kernel
-RUN pip3 install rapidwright
+#RUN pip3 install rapidwright
 
 # Patch for 2022.1.0
 #RUN mkdir -p /rapidwright_kernel/com/xilinx/rapidwright/util
@@ -37,6 +37,8 @@ COPY . $HOME
 RUN chown -R $NB_UID $HOME
 
 USER $NB_USER
+
+RUN pip3 install rapidwright
 
 # Launch the notebook server
 WORKDIR $HOME
