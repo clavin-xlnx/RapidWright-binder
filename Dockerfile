@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y python3-pip
 RUN pip3 install --no-cache-dir notebook==6.0.*
 
 # Download RapidWright and install kernel
-USER root
+#USER root
 #RUN mkdir rapidwright_kernel
 #RUN curl -L https://github.com/Xilinx/RapidWright/releases/download/v2022.1.0-beta/rapidwright-2022.1.0-standalone-lin64.jar > /rapidwright_kernel/rapidwright-2022.1.0-standalone-lin64.jar
 #RUN cd rapidwright_kernel && java -jar rapidwright-2022.1.0-standalone-lin64.jar --create_jupyter_kernel
